@@ -19,7 +19,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Marketing Agency - Transformamos Ideas en Resultados',
+      title: 'Markting.pe - Transformamos Ideas en Resultados',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },

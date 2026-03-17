@@ -11,9 +11,10 @@
   },
   "dependencies": {
     "@iconify/vue": "^5.0.0",
+    "@pinia/nuxt": "^0.11.3",
     "nuxt": "^3.14.159",
     "nuxt-icon": "^1.0.0-beta.7",
-    "pinia": "^2.2.6",
+    "pinia": "^3.0.4",
     "resend": "^4.0.0",
     "swiper": "^12.0.2",
     "tailwind-variants": "0.2.1",

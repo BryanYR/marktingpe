@@ -18,13 +18,18 @@ const handleNavClick = (sectionId: string) => {
 
 const isScrolled = ref(false)
 
-onMounted(() => {
-  const handleScroll = () => {
-    isScrolled.value = window.scrollY > 10
-  }
-  window.addEventListener('scroll', handleScroll)
-  onUnmounted(() => window.removeEventListener('scroll', handleScroll))
-})
+if (process.client) {
+  onMounted(() => {
+    const handleScroll = () => {
+      isScrolled.value = window.scrollY > 10
+    }
+    window.addEventListener('scroll', handleScroll)
+    
+    onUnmounted(() => {
+      window.removeEventListener('scroll', handleScroll)
+    })
+  })
+}
 </script>
 
 <template>

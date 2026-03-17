@@ -8,6 +8,5 @@ export default defineNuxtPlugin((nuxtApp) => {
     hideProgressBar: true,
     icon: false,
     closeButton: false,
-    toastClassName: "!p-0 z-[150]",
   });
 });

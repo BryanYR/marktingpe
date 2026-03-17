@@ -26,7 +26,7 @@ const navigation = {
         <!-- Brand -->
         <div class="space-y-4">
           <h3 class="text-2xl font-bold">
-            Marketing<span class="text-white/80">Agency</span>
+            Markting<span class="text-white/80">.pe</span>
           </h3>
           <p class="text-white/70 text-sm">
             Transformamos ideas en resultados. Agencia de marketing digital especializada en estrategias innovadoras.
@@ -74,7 +74,7 @@ const navigation = {
       </div>
 
       <div class="mt-12 pt-8 border-t border-white/10 text-center text-white/60 text-sm">
-        <p>&copy; {{ currentYear }} Marketing Agency. Todos los derechos reservados.</p>
+        <p>&copy; {{ currentYear }} Markting.pe . Todos los derechos reservados.</p>
       </div>
     </div>
   </footer>

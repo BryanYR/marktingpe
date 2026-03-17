@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const { scrollToSection } = useScrollToSection()
 const features = [
   {
     icon: 'heroicons:light-bulb',
@@ -40,7 +41,7 @@ const features = [
         </p>
 
         <div class="pt-4">
-          <UiAppButton variant="primary" size="lg">
+          <UiAppButton variant="primary" size="lg" @click="scrollToSection('contact')">
             Conoce Más
           </UiAppButton>
         </div>

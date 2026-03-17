@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { success: toastSuccess, error: toastError } = useToastNotification()
+const toast = useToastNotification()
 
 interface FormData {
   name: string
@@ -22,18 +22,14 @@ const errors = reactive<Partial<FormData>>({})
 
 const validateForm = (): boolean => {
   // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-  Object.keys(errors).forEach(key => delete errors[key as keyof FormData])
+  Object.keys(errors).forEach((key) => delete errors[key as keyof FormData])
 
-  if (!formData.name.trim()) {
-    errors.name = 'El nombre es requerido'
-  }
-  
   if (!formData.email.trim()) {
     errors.email = 'El email es requerido'
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
     errors.email = 'El email no es válido'
   }
-  
+
   if (!formData.message.trim()) {
     errors.message = 'El mensaje es requerido'
   }
@@ -43,7 +39,7 @@ const validateForm = (): boolean => {
 
 const handleSubmit = async () => {
   if (!validateForm()) {
-    toastError('Por favor, completa todos los campos requeridos')
+    toast.error('Por favor, completa todos los campos requeridos')
     return
   }
 
@@ -55,15 +51,17 @@ const handleSubmit = async () => {
       body: formData,
     })
 
-    toastSuccess('¡Mensaje enviado correctamente! Te contactaremos pronto.')
-    
+    toast.success('¡Mensaje enviado correctamente! Te contactaremos pronto.')
+
     // Reset form
-    Object.keys(formData).forEach(key => {
+    Object.keys(formData).forEach((key) => {
       formData[key as keyof FormData] = ''
     })
   } catch (error) {
     console.error('Error al enviar el formulario:', error)
-    toastError('Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.')
+    toast.error(
+      'Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.',
+    )
   } finally {
     isSubmitting.value = false
   }
@@ -101,103 +99,93 @@ const contactInfo = [
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
       <!-- Contact Form -->
       <div class="bg-white rounded-xl shadow-lg p-8">
-        <form @submit.prevent="handleSubmit" class="space-y-6">
-          <!-- Name -->
-          <div>
-            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
-              Nombre <span class="text-red-500">*</span>
-            </label>
-            <input
-              id="name"
-              v-model="formData.name"
-              type="text"
-              :class="[
-                'w-full px-4 py-3 rounded-lg border-2 transition-colors',
-                errors.name ? 'border-red-500' : 'border-gray-200 focus:border-primary',
-              ]"
-              placeholder="Tu nombre completo"
-            />
-            <p v-if="errors.name" class="mt-1 text-sm text-red-500">{{ errors.name }}</p>
-          </div>
+        <form @submit.prevent="handleSubmit" class="flex flex-col h-full">
+          <!-- Email y Empresa en fila -->
+          <div class="grid grid-cols-1 gap-6 mb-6">
+            <!-- Email -->
+            <div>
+              <label
+                for="email"
+                class="block text-sm font-medium text-gray-700 mb-2"
+              >
+                Email <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="email"
+                v-model="formData.email"
+                type="email"
+                :class="[
+                  'w-full px-4 py-3 rounded-lg border-2 transition-colors',
+                  errors.email
+                    ? 'border-red-500'
+                    : 'border-gray-200 focus:border-primary',
+                ]"
+                placeholder="tu@email.com"
+              />
+              <p v-if="errors.email" class="mt-1 text-sm text-red-500">
+                {{ errors.email }}
+              </p>
+            </div>
 
-          <!-- Email -->
-          <div>
-            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
-              Email <span class="text-red-500">*</span>
-            </label>
-            <input
-              id="email"
-              v-model="formData.email"
-              type="email"
-              :class="[
-                'w-full px-4 py-3 rounded-lg border-2 transition-colors',
-                errors.email ? 'border-red-500' : 'border-gray-200 focus:border-primary',
-              ]"
-              placeholder="tu@email.com"
-            />
-            <p v-if="errors.email" class="mt-1 text-sm text-red-500">{{ errors.email }}</p>
-          </div>
-
-          <!-- Phone -->
-          <div>
-            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">
-              Teléfono
-            </label>
-            <input
-              id="phone"
-              v-model="formData.phone"
-              type="tel"
-              class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary transition-colors"
-              placeholder="+1 (555) 123-4567"
-            />
-          </div>
-
-          <!-- Company -->
-          <div>
-            <label for="company" class="block text-sm font-medium text-gray-700 mb-2">
-              Empresa
-            </label>
-            <input
-              id="company"
-              v-model="formData.company"
-              type="text"
-              class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary transition-colors"
-              placeholder="Nombre de tu empresa"
-            />
+            <!-- Company -->
+            <div>
+              <label
+                for="company"
+                class="block text-sm font-medium text-gray-700 mb-2"
+              >
+                Empresa
+              </label>
+              <input
+                id="company"
+                v-model="formData.company"
+                type="text"
+                class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary transition-colors"
+                placeholder="Nombre de tu empresa"
+              />
+            </div>
           </div>
 
           <!-- Message -->
-          <div>
-            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">
+          <div class="mb-6 flex-1">
+            <label
+              for="message"
+              class="block text-sm font-medium text-gray-700 mb-2"
+            >
               Mensaje <span class="text-red-500">*</span>
             </label>
             <textarea
               id="message"
               v-model="formData.message"
-              rows="5"
+              rows="6"
               :class="[
-                'w-full px-4 py-3 rounded-lg border-2 transition-colors resize-none',
-                errors.message ? 'border-red-500' : 'border-gray-200 focus:border-primary',
+                'w-full h-full min-h-[160px] px-4 py-3 rounded-lg border-2 transition-colors resize-none',
+                errors.message
+                  ? 'border-red-500'
+                  : 'border-gray-200 focus:border-primary',
               ]"
               placeholder="Cuéntanos sobre tu proyecto..."
             ></textarea>
-            <p v-if="errors.message" class="mt-1 text-sm text-red-500">{{ errors.message }}</p>
+            <p v-if="errors.message" class="mt-1 text-sm text-red-500">
+              {{ errors.message }}
+            </p>
           </div>
 
-          <!-- Submit Button -->
-          <UiAppButton
-            type="submit"
-            variant="primary"
-            size="lg"
-            :disabled="isSubmitting"
-            class="w-full"
-          >
-            <span v-if="!isSubmitting">Enviar Mensaje</span>
-            <span v-else class="flex items-center justify-center gap-2">
-              <Icon name="eos-icons:loading" class="w-5 h-5 animate-spin" />
-              Enviando...
-            </span>
-          </UiAppButton>
+          <div class="pt-10">
+            <!-- Submit Button -->
+            <UiAppButton
+              type="submit"
+              variant="primary"
+              size="lg"
+              :disabled="isSubmitting"
+              class="w-full"
+            >
+              <span v-if="!isSubmitting">Enviar Mensaje</span>
+              <span v-else class="flex items-center justify-center gap-2">
+                <Icon name="eos-icons:loading" class="w-5 h-5 animate-spin" />
+                Enviando...
+              </span>
+            </UiAppButton>
+          </div>
         </form>
       </div>
 
@@ -206,7 +194,8 @@ const contactInfo = [
         <div class="space-y-6">
           <h3 class="text-2xl font-semibold">Información de Contacto</h3>
           <p class="text-gray-600">
-            Estamos aquí para responder todas tus preguntas y ayudarte a comenzar tu próximo proyecto exitoso.
+            Estamos aquí para responder todas tus preguntas y ayudarte a
+            comenzar tu próximo proyecto exitoso.
           </p>
         </div>
 
@@ -218,8 +207,13 @@ const contactInfo = [
             :href="info.href"
             class="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow group"
           >
-            <div class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all">
-              <Icon :name="info.icon" class="w-6 h-6 text-primary group-hover:text-white transition-colors" />
+            <div
+              class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all"
+            >
+              <Icon
+                :name="info.icon"
+                class="w-6 h-6 text-primary group-hover:text-white transition-colors"
+              />
             </div>
             <div>
               <p class="text-sm text-gray-500 mb-1">{{ info.title }}</p>
@@ -233,12 +227,20 @@ const contactInfo = [
           <h4 class="text-lg font-semibold mb-4">Síguenos</h4>
           <div class="flex gap-4">
             <a
-              v-for="social in ['mdi:facebook', 'mdi:instagram', 'mdi:linkedin', 'mdi:twitter']"
+              v-for="social in [
+                'mdi:facebook',
+                'mdi:instagram',
+                'mdi:linkedin',
+                'mdi:twitter',
+              ]"
               :key="social"
               href="#"
               class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center hover:bg-primary hover:scale-110 transition-all group"
             >
-              <Icon :name="social" class="w-6 h-6 text-primary group-hover:text-white transition-colors" />
+              <Icon
+                :name="social"
+                class="w-6 h-6 text-primary group-hover:text-white transition-colors"
+              />
             </a>
           </div>
         </div>

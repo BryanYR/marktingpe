@@ -43,8 +43,8 @@ const steps = [
 
         <!-- Step Card -->
         <div class="relative z-10 space-y-4 text-center lg:text-left">
-          <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-primary/10 border-4 border-white shadow-lg">
-            <Icon :name="step.icon" class="w-10 h-10 text-primary" />
+          <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-primary border-4 border-white shadow-lg">
+            <Icon :name="step.icon" class="w-10 h-10 text-white" />
           </div>
 
           <div class="space-y-2">

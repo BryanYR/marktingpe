@@ -5,7 +5,13 @@ const { scrollToSection } = useScrollToSection()
 <template>
   <section id="hero" class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary via-primary/95 to-dark text-white pt-20">
     <div class="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
-    
+    <UiMarqueeText
+      :words="['Markting.pe']"
+      opacity-class="opacity-10"
+      size-class="text-6xl sm:text-[10rem] lg:text-[16rem]"
+      y-class="top-1/2 -translate-y-1/2"
+      color-class="text-white"
+    />
     <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
       <div class="space-y-8 animate-fade-in">
         <UiBadge variant="outline" size="lg" class="bg-white/10 text-white border-white/30 uppercase hover:bg-white/20 transition-colors">

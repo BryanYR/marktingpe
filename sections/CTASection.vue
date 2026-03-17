@@ -27,7 +27,7 @@ const { scrollToSection } = useScrollToSection()
           class="border-white text-white hover:bg-white hover:!text-primary"
           @click="scrollToSection('portfolio')"
         >
-          Ver Casos de Éxito
+          Ver Trabajos Destacados
         </UiAppButton>
       </div>
 

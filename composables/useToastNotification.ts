@@ -5,13 +5,24 @@ type ToastType = "success" | "error" | "info" | "warning";
 export const useToastNotification = () => {
   let toast: ToastInterface | null = null;
 
-  if (import.meta.client) {
-    const nuxtApp = useNuxtApp();
-    toast = nuxtApp.vueApp.config.globalProperties.$toast as ToastInterface;
-  }
+  const initToast = async () => {
+    if (!import.meta.client) return;
 
-  const show = (type: ToastType, message: string, options = {}) => {
+    const module = await import("vue-toastification");
+    toast = module.useToast();
+  };
+
+  const show = async (
+    type: ToastType,
+    message: string,
+    options = {}
+  ) => {
+    if (!toast) {
+      await initToast();
+    }
+
     if (!toast) return;
+
     toast[type](message, options);
   };
 

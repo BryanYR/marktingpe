@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
     const body = await readBody<ContactFormData>(event)
 
     // Validar datos requeridos
-    if (!body.name || !body.email || !body.message) {
+    if (!body.email || !body.message) {
       throw createError({
         statusCode: 400,
         message: 'Faltan campos requeridos',
@@ -54,7 +54,7 @@ export default defineEventHandler(async (event) => {
 
     // Enviar email
     const { data, error } = await resend.emails.send({
-      from: 'Marketing Agency <onboarding@resend.dev>', // Cambiar por tu dominio verificado
+      from: 'Markting.pe <onboarding@resend.dev>', // Cambiar por tu dominio verificado
       to: ['bjyepez15@gmail.com'],
       subject: `Nuevo mensaje de contacto: ${body.name}`,
       html: `
@@ -78,10 +78,6 @@ export default defineEventHandler(async (event) => {
                 <h1 style="margin: 0;">Nuevo Mensaje de Contacto</h1>
               </div>
               <div class="content">
-                <div class="field">
-                  <div class="label">Nombre:</div>
-                  <div class="value">${body.name}</div>
-                </div>
                 <div class="field">
                   <div class="label">Email:</div>
                   <div class="value"><a href="mailto:${body.email}">${body.email}</a></div>

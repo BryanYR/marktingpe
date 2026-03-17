@@ -5,6 +5,12 @@ export default defineNuxtConfig({
 
   modules: ['@nuxt/eslint', '@nuxt/icon', '@pinia/nuxt'],
 
+  icon: {
+    serverBundle: {
+      collections: ['heroicons', 'eos-icons']
+    }
+  },
+
   css: [
     '~/assets/css/main.css',
     'vue-toastification/dist/index.css',

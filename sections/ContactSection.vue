@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { useToast } from 'vue-toastification'
-
-const toast = useToast()
+const { success: toastSuccess, error: toastError } = useToastNotification()
 
 interface FormData {
   name: string
@@ -45,7 +43,7 @@ const validateForm = (): boolean => {
 
 const handleSubmit = async () => {
   if (!validateForm()) {
-    toast.error('Por favor, completa todos los campos requeridos')
+    toastError('Por favor, completa todos los campos requeridos')
     return
   }
 
@@ -57,7 +55,7 @@ const handleSubmit = async () => {
       body: formData,
     })
 
-    toast.success('¡Mensaje enviado correctamente! Te contactaremos pronto.')
+    toastSuccess('¡Mensaje enviado correctamente! Te contactaremos pronto.')
     
     // Reset form
     Object.keys(formData).forEach(key => {
@@ -65,7 +63,7 @@ const handleSubmit = async () => {
     })
   } catch (error) {
     console.error('Error al enviar el formulario:', error)
-    toast.error('Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.')
+    toastError('Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.')
   } finally {
     isSubmitting.value = false
   }

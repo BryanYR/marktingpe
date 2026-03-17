@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
 
-  modules: ['@nuxt/eslint', 'nuxt-icon', '@pinia/nuxt'],
+  modules: ['@nuxt/eslint', '@nuxt/icon', '@pinia/nuxt'],
 
   css: [
     '~/assets/css/main.css',

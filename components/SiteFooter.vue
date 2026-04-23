@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { SOCIAL_LINKS } from '~/constants/social'
+
 const { scrollToSection } = useScrollToSection()
 
 const currentYear = new Date().getFullYear()
@@ -9,12 +11,6 @@ const navigation = {
     { name: 'Servicios', id: 'services' },
     { name: 'Portfolio', id: 'portfolio' },
     { name: 'Metodología', id: 'methodology' },
-  ],
-  social: [
-    { name: 'Facebook', icon: 'mdi:facebook', href: '#' },
-    { name: 'Instagram', icon: 'mdi:instagram', href: '#' },
-    { name: 'LinkedIn', icon: 'mdi:linkedin', href: '#' },
-    { name: 'Twitter', icon: 'mdi:twitter', href: '#' },
   ],
 }
 </script>
@@ -59,7 +55,7 @@ const navigation = {
           </div>
           <div class="flex gap-4">
             <a
-              v-for="item in navigation.social"
+              v-for="item in SOCIAL_LINKS"
               :key="item.name"
               :href="item.href"
               target="_blank"

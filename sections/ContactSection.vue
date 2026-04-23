@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { SOCIAL_LINKS } from '~/constants/social'
+
 const toast = useToastNotification()
 
 interface FormData {
@@ -71,19 +73,19 @@ const contactInfo = [
   {
     icon: 'heroicons:envelope',
     title: 'Email',
-    value: 'bjyepez15@gmail.com',
-    href: 'mailto:bjyepez15@gmail.com',
+    value: 'hola@markting.pe',
+    href: 'mailto:hola@markting.pe',
   },
   {
     icon: 'heroicons:phone',
     title: 'Teléfono',
-    value: '+1 (555) 123-4567',
-    href: 'tel:+15551234567',
+    value: '+51 982 200 817',
+    href: 'tel:+51982200817',
   },
   {
     icon: 'heroicons:map-pin',
     title: 'Ubicación',
-    value: 'Ciudad, País',
+    value: 'Lima, Perú',
     href: '#',
   },
 ]
@@ -227,18 +229,16 @@ const contactInfo = [
           <h4 class="text-lg font-semibold mb-4">Síguenos</h4>
           <div class="flex gap-4">
             <a
-              v-for="social in [
-                'mdi:facebook',
-                'mdi:instagram',
-                'mdi:linkedin',
-                'mdi:twitter',
-              ]"
-              :key="social"
-              href="#"
+              v-for="social in SOCIAL_LINKS"
+              :key="social.name"
+              :href="social.href"
+              target="_blank"
+              rel="noopener noreferrer"
+              :aria-label="social.name"
               class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center hover:bg-primary hover:scale-110 transition-all group"
             >
               <Icon
-                :name="social"
+                :name="social.icon"
                 class="w-6 h-6 text-primary group-hover:text-white transition-colors"
               />
             </a>

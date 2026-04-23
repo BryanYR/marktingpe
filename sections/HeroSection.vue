@@ -24,7 +24,7 @@ const { scrollToSection } = useScrollToSection()
         </h1>
 
         <p class="text-lg sm:text-xl md:text-2xl text-white/80 max-w-3xl mx-auto">
-          Estrategias de marketing innovadoras que impulsan tu marca y generan crecimiento real
+          Agencia de marketing exclusiva para empresas de servicios
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">

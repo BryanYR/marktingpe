@@ -3,8 +3,8 @@ const { scrollToSection } = useScrollToSection()
 const features = [
   {
     icon: 'heroicons:light-bulb',
-    title: 'Innovación Constante',
-    description: 'Siempre a la vanguardia de las últimas tendencias y tecnologías del marketing digital.',
+    title: 'Metodología de Excelencia',
+    description: 'Nuestros procesos y estándares están alineados a la mejora continua y atención a los detalles.',
   },
   {
     icon: 'heroicons:chart-bar',
@@ -13,7 +13,7 @@ const features = [
   },
   {
     icon: 'heroicons:users',
-    title: 'Equipo Experto',
+    title: 'Equipo Especializado',
     description: 'Profesionales especializados en cada área del marketing digital.',
   },
 ]
@@ -27,17 +27,11 @@ const features = [
         <UiBadge variant="primary">Nosotros</UiBadge>
         
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-balance">
-          Somos tu Aliado Estratégico en Marketing Digital
+          Transformamos ideas en resultados medibles
         </h2>
         
         <p class="text-lg text-gray-600 leading-relaxed">
-          Nos especializamos en crear estrategias de marketing 
-          personalizadas que conectan marcas con sus audiencias de manera auténtica y efectiva.
-        </p>
-        
-        <p class="text-lg text-gray-600 leading-relaxed">
-          Nuestro enfoque combina creatividad, análisis de datos y tecnología para entregar 
-          campañas que no solo se ven bien, sino que generan resultados reales y medibles.
+          Agencia especializada en construir y posicionar marcas que se distinguen por su propuesta de valor, comunicación estratégica y excelencia en cada detalle.
         </p>
 
         <div class="pt-4">

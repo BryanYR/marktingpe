@@ -54,8 +54,9 @@ export default defineEventHandler(async (event) => {
 
     // Enviar email
     const { data, error } = await resend.emails.send({
-      from: 'Markting.pe <onboarding@resend.dev>', // Cambiar por tu dominio verificado
-      to: ['bjyepez15@gmail.com'],
+      from: 'Markting.pe <hola@markting.pe>',
+      to: ['team@markting.pe'],
+      replyTo: body.email,
       subject: `Nuevo mensaje de contacto: ${body.name}`,
       html: `
         <!DOCTYPE html>

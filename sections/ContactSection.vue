@@ -73,8 +73,8 @@ const contactInfo = [
   {
     icon: 'heroicons:envelope',
     title: 'Email',
-    value: 'hola@markting.pe',
-    href: 'mailto:hola@markting.pe',
+    value: 'team@markting.pe',
+    href: 'mailto:team@markting.pe',
   },
   {
     icon: 'heroicons:phone',
@@ -85,7 +85,7 @@ const contactInfo = [
   {
     icon: 'heroicons:map-pin',
     title: 'Ubicación',
-    value: 'Lima, Perú',
+    value: 'San Isidro, Lima - Perú',
     href: '#',
   },
 ]

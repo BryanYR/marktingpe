@@ -50,7 +50,7 @@ const navigation = {
           <div class="space-y-3 mb-6">
             <p class="text-white/70 text-sm flex items-center gap-2">
               <Icon name="heroicons:envelope" class="w-5 h-5" />
-              bjyepez15@gmail.com
+              team@markting.pe
             </p>
           </div>
           <div class="flex gap-4">

@@ -18,7 +18,7 @@ const handleNavClick = (sectionId: string) => {
 
 const isScrolled = ref(false)
 
-if (process.client) {
+if (import.meta.client) {
   onMounted(() => {
     const handleScroll = () => {
       isScrolled.value = window.scrollY > 10

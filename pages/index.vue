@@ -20,14 +20,15 @@ useHead({
     
     <main>
       <HeroSection />
-      <AboutSection />
-      <ServicesSection />
-      <CTASection />
-      <PortfolioSection />
-      <MethodologySection />
-      <ContactSection />
+      <AboutSection v-animate />
+      <ServicesSection v-animate />
+      <CTASection v-animate />
+      <PortfolioSection v-animate />
+      <MethodologySection v-animate />
+      <ContactSection v-animate />
     </main>
 
     <SiteFooter />
+    <WhatsAppButton />
   </div>
 </template>

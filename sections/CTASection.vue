@@ -30,22 +30,6 @@ const { scrollToSection } = useScrollToSection()
           Ver Trabajos Destacados
         </UiAppButton>
       </div>
-
-      <!-- Trust Indicators -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-12 border-t border-white/20">
-        <div>
-          <Icon name="heroicons:check-circle" class="w-8 h-8 mx-auto mb-2 text-white/80" />
-          <p class="text-white/70">Sin compromiso</p>
-        </div>
-        <div>
-          <Icon name="heroicons:clock" class="w-8 h-8 mx-auto mb-2 text-white/80" />
-          <p class="text-white/70">Respuesta en 24h</p>
-        </div>
-        <div>
-          <Icon name="heroicons:shield-check" class="w-8 h-8 mx-auto mb-2 text-white/80" />
-          <p class="text-white/70">Garantía de calidad</p>
-        </div>
-      </div>
     </div>
   </UiSectionContainer>
 </template>

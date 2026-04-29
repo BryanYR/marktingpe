@@ -1,10 +1,5 @@
 export const SOCIAL_LINKS = [
   {
-    name: 'Facebook',
-    icon: 'mdi:facebook',
-    href: '#',
-  },
-  {
     name: 'Instagram',
     icon: 'mdi:instagram',
     href: 'https://www.instagram.com/markting.pe/',

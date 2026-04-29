@@ -15,9 +15,7 @@ export interface Service {
 export interface PortfolioItem {
   title: string
   category: string
-  description: string
-  metrics: string[]
-  image: string
+  images: string[]
 }
 
 export interface MethodologyStep {

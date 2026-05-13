@@ -44,11 +44,11 @@ if (import.meta.client) {
         <!-- Logo -->
         <div class="flex-shrink-0">
           <button
-            class="text-2xl font-bold   transition-colors"
+            class="text-2xl transition-colors"
             :class="isScrolled ? 'text-gray-700' : 'text-white hover:text-white/80'"
             @click="handleNavClick('hero')"
           >
-            Markting.pe
+            <span class="font-bold">Mark</span><span class="font-normal">ting.pe</span>
           </button>
         </div>
 

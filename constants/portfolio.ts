@@ -58,7 +58,7 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     title: 'Godesh',
-    category: 'Restaurantes',
+    category: 'Spa',
     images: [
       '/images/godesh/godesh-2.webp',
       '/images/godesh/godesh-1.webp',

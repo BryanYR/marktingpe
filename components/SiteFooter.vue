@@ -21,8 +21,8 @@ const navigation = {
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
         <!-- Brand -->
         <div class="space-y-4">
-          <h3 class="text-2xl font-bold">
-            Markting<span class="text-white/80">.pe</span>
+          <h3 class="text-2xl">
+            <span class="font-bold">Mark</span><span class="font-normal">ting</span><span class="font-normal text-white/80">.pe</span>
           </h3>
           <p class="text-white/70 text-sm">
             Transformamos ideas en resultados. Agencia de marketing digital especializada en estrategias innovadoras.
